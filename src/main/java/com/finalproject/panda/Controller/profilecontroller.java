@@ -48,6 +48,9 @@ public class profilecontroller {
         return "redirect:/panda/login";
     }
 
+
+    
+
     @GetMapping("/riwayat")
     public String riwayat(Model model, HttpSession session) {
         try {

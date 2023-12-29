@@ -93,7 +93,7 @@
                     style="background-color: #fff"
                     class="form-control"
                     id="Alamat"
-                    type="email"
+                    type="text"
                     th:placeholder="${user.alamat}"
                     readonly
                   />
@@ -144,7 +144,7 @@
                         ></button>
                       </div>
                       <div class="modal-body">
-                        <div class="card-body ">
+                        <div class="card-body">
                           <form>
                             <!-- nik-->
                             <div class="mb-3">
@@ -169,6 +169,7 @@
                                 class="form-control"
                                 id="Nama_lengkap"
                                 type="text"
+                                th:placeholder="${user.nama_lengkap}"
                               />
                             </div>
 
@@ -180,7 +181,8 @@
                                 style="background-color: #fff"
                                 class="form-control"
                                 id="Alamat"
-                                type="email"
+                                type="text"
+                                th:placeholder="${user.alamat}"
                               />
                             </div>
                             <!-- Form Row-->
@@ -194,6 +196,7 @@
                                 class="form-control"
                                 id="NomorHP"
                                 type="tel"
+                                th:placeholder="${user.nomor_hp}"
                               />
                             </div>
                           </form>
