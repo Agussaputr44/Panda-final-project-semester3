@@ -19,7 +19,7 @@ public class UserService {
 
     public User saveUser(User users) {
         User saveUser = userRepo.save(users);
-        log.info(users.getNama_lengkap() + " berhasil mendaftar");
+        // log.info(users.getNama_lengkap() + " berhasil mendaftar");
         return saveUser;
     }
 

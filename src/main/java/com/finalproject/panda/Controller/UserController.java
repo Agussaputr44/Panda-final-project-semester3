@@ -1,5 +1,7 @@
 package com.finalproject.panda.Controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+        private static final Logger log = LoggerFactory.getLogger(UserService.class);
+
 
     @GetMapping("/login")
     public String login() {
@@ -41,6 +46,42 @@ public class UserController {
         }
     }
 
+    @PostMapping("/update")
+    public String saveUser(@ModelAttribute("user") User updatedUser,
+            @RequestParam("fotoFile") MultipartFile fotoFile,
+            Model model, HttpSession session) {
+        try {
+            User currentUser = (User) session.getAttribute("loggedInUser");
+
+            if (currentUser != null) {
+                currentUser.setNama_lengkap(updatedUser.getNama_lengkap());
+                currentUser.setAlamat(updatedUser.getAlamat());
+                currentUser.setNomor_hp(updatedUser.getNomor_hp());
+
+                if (fotoFile != null && !fotoFile.isEmpty()) {
+                    byte[] fotoBytes = fotoFile.getBytes();
+                    currentUser.setFoto(fotoBytes);
+                }
+
+                userService.saveUser(currentUser);
+
+                model.addAttribute("user", currentUser);
+                        log.info(currentUser.getNama_lengkap() + " berhasil update profile");
+
+                model.addAttribute("successMessage", "Profile updated successfully");
+                return "redirect:/panda/profile";
+            } else {
+                model.addAttribute("errorMessage", "User not found in the session");
+                return "redirect:/panda/error"; // Redirect to an error page
+            }
+
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "An error occurred while updating the profile");
+            e.printStackTrace();
+            return "redirect:/panda/error"; // Redirect to an error page
+        }
+    }
+
     @GetMapping("/daftar")
     public String daftarPage(Model model) {
         try {
@@ -60,6 +101,8 @@ public class UserController {
             }
 
             userService.saveUser(users);
+        log.info(users.getNama_lengkap() + " berhasil mendaftar");
+
             model.addAttribute("user", users);
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,31 +111,32 @@ public class UserController {
     }
 
     // @PostMapping("/update")
-    // public String updateProfile(Model model, @RequestParam("fotoFile") MultipartFile fotoFile,
-    //         HttpSession session, User updatedUser) {
-    //     try {
-    //         User currentUser = (User) session.getAttribute("loggedInUser");
-    
-    //         currentUser.setNama_lengkap(updatedUser.getNama_lengkap());
-    //         currentUser.setAlamat(updatedUser.getAlamat());
-    //         currentUser.setNomor_hp(updatedUser.getNomor_hp());
-    
-    //         if (fotoFile != null && !fotoFile.isEmpty()) {
-    //             byte[] fotoBytes = fotoFile.getBytes();
-    //             currentUser.setFoto(fotoBytes);
-    //         }
-    
-    //         model.addAttribute("user", currentUser);
-    //         userService.saveUser(currentUser);
-    
-    //         model.addAttribute("successMessage", "Profile updated successfully");
-    //     } catch (Exception e) {
-    //         model.addAttribute("errorMessage", "An error occurred while updating the profile");
-    //         e.printStackTrace(); 
-    //     }
-    //     return "redirect:/panda/pengaduan";
+    // public String updateProfile(Model model, @RequestParam("fotoFile")
+    // MultipartFile fotoFile,
+    // HttpSession session, User updatedUser) {
+    // try {
+    // User currentUser = (User) session.getAttribute("loggedInUser");
+
+    // currentUser.setNama_lengkap(updatedUser.getNama_lengkap());
+    // currentUser.setAlamat(updatedUser.getAlamat());
+    // currentUser.setNomor_hp(updatedUser.getNomor_hp());
+
+    // if (fotoFile != null && !fotoFile.isEmpty()) {
+    // byte[] fotoBytes = fotoFile.getBytes();
+    // currentUser.setFoto(fotoBytes);
     // }
-    
+
+    // model.addAttribute("user", currentUser);
+    // userService.saveUser(currentUser);
+
+    // model.addAttribute("successMessage", "Profile updated successfully");
+    // } catch (Exception e) {
+    // model.addAttribute("errorMessage", "An error occurred while updating the
+    // profile");
+    // e.printStackTrace();
+    // }
+    // return "redirect:/panda/pengaduan";
+    // }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {

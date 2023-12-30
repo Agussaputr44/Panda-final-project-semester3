@@ -3,7 +3,6 @@ package com.finalproject.panda.Controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Base64;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -39,14 +38,15 @@ public class Profilecontroller {
 
                 byte[] fotoData = loggedInUser.getFoto();
 
-                Path fotoPath = Paths.get("src/main/resources/static/imgEncode/photo.jpg"); // Replace with your desired file path
-                Files.write(fotoPath, fotoData);
-                
+                Path fotoPath = Paths.get("src/main/resources/static/imgEncode/photo.jpg");
 
-                // Set the file path in the model
+                Files.write(fotoPath, fotoData);
+
                 model.addAttribute("fotoPath", fotoPath.toString());
 
                 model.addAttribute("user", loggedInUser);
+                // session.setAttribute("loggedInUser", user);
+
                 return "User/ProfileUser";
             } else {
                 log.info("User is null. Redirecting to login page.");
@@ -58,9 +58,6 @@ public class Profilecontroller {
 
         return "redirect:/panda/login";
     }
-
-
-    
 
     @GetMapping("/riwayat")
     public String riwayat(Model model, HttpSession session) {
@@ -83,5 +80,28 @@ public class Profilecontroller {
             return "redirect:/panda/login";
         }
     }
+
+    @GetMapping("/editProfile")
+    public String edit(Model model, HttpSession session, User user) {
+        try {
+            User loggedInUser = (User) session.getAttribute("loggedInUser");
+            if (loggedInUser != null) {
+                model.addAttribute("user", loggedInUser);
+                log.info(loggedInUser.getNama_lengkap() + " disini");
+                return "User/EditProfile";
+
+            } else {
+                log.info("User is null. Redirecting to login page.");
+                return "redirect:/panda/login";
+            }
+        } catch (Exception e) {
+            log.info("user null");
+            return "redirect:/panda/login";
+
+        }
+
+    }
+
+    
 
 }
