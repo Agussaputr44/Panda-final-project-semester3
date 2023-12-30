@@ -3,11 +3,7 @@ package com.finalproject.panda.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.finalproject.panda.Service.UserService;
@@ -71,12 +67,38 @@ public class UserController {
         return "redirect:/panda/login";
     }
 
-  @GetMapping("/logout")
-  public String logout(HttpServletRequest request) {
-    if (request.getParameter("logout") != null) {
-      request.getSession().invalidate();
-    }
-    return "redirect:/panda/login";
-  }
+    // @PostMapping("/update")
+    // public String updateProfile(Model model, @RequestParam("fotoFile") MultipartFile fotoFile,
+    //         HttpSession session, User updatedUser) {
+    //     try {
+    //         User currentUser = (User) session.getAttribute("loggedInUser");
+    
+    //         currentUser.setNama_lengkap(updatedUser.getNama_lengkap());
+    //         currentUser.setAlamat(updatedUser.getAlamat());
+    //         currentUser.setNomor_hp(updatedUser.getNomor_hp());
+    
+    //         if (fotoFile != null && !fotoFile.isEmpty()) {
+    //             byte[] fotoBytes = fotoFile.getBytes();
+    //             currentUser.setFoto(fotoBytes);
+    //         }
+    
+    //         model.addAttribute("user", currentUser);
+    //         userService.saveUser(currentUser);
+    
+    //         model.addAttribute("successMessage", "Profile updated successfully");
+    //     } catch (Exception e) {
+    //         model.addAttribute("errorMessage", "An error occurred while updating the profile");
+    //         e.printStackTrace(); 
+    //     }
+    //     return "redirect:/panda/pengaduan";
+    // }
+    
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        if (request.getParameter("logout") != null) {
+            request.getSession().invalidate();
+        }
+        return "redirect:/";
+    }
 }

@@ -1,5 +1,9 @@
 package com.finalproject.panda.Controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -19,7 +23,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/panda")
-public class profilecontroller {
+public class Profilecontroller {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
@@ -32,16 +36,23 @@ public class profilecontroller {
         try {
             if (loggedInUser != null) {
                 log.info(loggedInUser.getNama_lengkap() + " disini");
-                model.addAttribute("user", loggedInUser);
-                session.setAttribute("loggedInUser", loggedInUser);
 
-                return "User/ProfileUser"; 
+                byte[] fotoData = loggedInUser.getFoto();
+
+                Path fotoPath = Paths.get("src/main/resources/static/imgEncode/photo.jpg"); // Replace with your desired file path
+                Files.write(fotoPath, fotoData);
+                
+
+                // Set the file path in the model
+                model.addAttribute("fotoPath", fotoPath.toString());
+
+                model.addAttribute("user", loggedInUser);
+                return "User/ProfileUser";
             } else {
                 log.info("User is null. Redirecting to login page.");
                 return "redirect:/panda/login";
             }
         } catch (Exception e) {
-            // Handle exceptions if needed
             log.error("Error in profile controller", e);
         }
 
@@ -68,11 +79,6 @@ public class profilecontroller {
             log.error("Error in riwayat method", e);
             return "redirect:/panda/login";
         }
-    }
-    
-    @GetMapping("/editProfile")
-    public String editProfile(){
-        return "user/editProfile";
     }
 
 }
