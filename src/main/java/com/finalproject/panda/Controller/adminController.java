@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/panda")
-public class AdminController {
+public class adminController {
    
 
     @GetMapping("/admin")

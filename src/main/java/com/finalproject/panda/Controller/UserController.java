@@ -89,7 +89,7 @@ public class UserController {
             model.addAttribute("user", user);
         } catch (Exception e) {
         }
-        return "User/DaftarPage";
+        return "User/login";
     }
 
     @PostMapping("/daftar")
