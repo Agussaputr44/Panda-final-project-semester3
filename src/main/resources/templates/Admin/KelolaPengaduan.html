@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{layoutadmin :: layoutadmin(~{::title}, ~{::div#content}, 'kelolaPengaduan')}"
+<html lang="en" th:replace="~{layoutadmin :: layoutadmin(~{::title}, ~{::section}, 'kelolaPengaduan')}"
     xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -15,7 +15,8 @@
 </head>
 
 <body>
-    <div class="table-data" id="content">
+    <section>
+    <div class="table-data">
         <div class="order">
             <div class="head">
                 <h3>Kelola user</h3>
@@ -49,7 +50,7 @@
                 </tbody>
             </table>
         </div>
-
+    </section>
         <!-- DataTables JS -->
         <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>

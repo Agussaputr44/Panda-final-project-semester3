@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  th:replace="~{layoutadmin :: layoutadmin(~{::title}, ~{::div#content}, 'dashboard')}"
+  th:replace="~{layoutadmin :: layoutadmin(~{::title}, ~{::section}, 'dashboard')}"
   xmlns:th="http://www.thymeleaf.org"
 >
   <head>
@@ -13,8 +13,8 @@
   </head>
   <body>
     <section>
-    <div id="content" >
-      <div class="head-title">
+   
+      <div class="head-title" >
 				<div class="left">
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
@@ -119,6 +119,6 @@
 				</div>
 				
 			</div>
-    </div>
+    </section>
   </body>
 </html>
