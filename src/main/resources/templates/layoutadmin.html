@@ -1,212 +1,151 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  th:fragment="layoutadmin (title, content, menu)"
-  xmlns:th="http://www.thymeleaf.org"
->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <!-- boostrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <!-- awesom -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+<html lang="en" th:fragment="layoutadmin(title, content, menu)" xmlns:th="http://www.thymeleaf.org">
 
-    <!-- DataTables CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"
-    />
-    <!-- <link rel="stylesheet" href="admin.css" /> -->
-    <title th:replace="${title}">lapor min</title>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-      body {
-        background: #ecf0f3;
-      }
-      .side_bar {
-        position: relative;
-        top: 0;
-        left: -100%;
-        width: 300px;
-        height: 100vh;
-        background: #ecf0f3;
-        padding: 12px;
-        box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1,
-          inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
-        transition: all 0.3s ease;
-      }
-      .side_bar .title {
-        display: flex;
-        justify-content: space-evenly;
-      }
-      .side_bar .title .logo {
-        font-size: 27px;
-        font-weight: 600;
-        color: #31344b;
-      }
-      .side_bar ul {
-        margin-top: 35px;
-        list-style: none;
-      }
-      .side_bar ul a {
-        color: #31344b;
-        text-decoration: none;
-        display: block;
-        margin-top: 12px;
-        font-size: 18px;
-        font-weight: 400;
-        padding: 10px 25px;
-        border-radius: 6px;
-        box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
-        position: relative;
-        transition: all 0.2s ease;
-      }
-      .side_bar ul i {
-        margin-right: 10px;
-      }
-      .media_icons {
-        margin-top: 50px;
-        display: flex;
-        justify-content: center;
-      }
-      .media_icons a {
-        position: relative;
-        margin: 0 4px;
-        font-size: 17px;
-        cursor: pointer;
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 40px;
-        text-decoration: none;
-        box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
-        transition: all 0.3s ease;
-      }
-      .side_bar ul a:hover:before,
-      .media_icons a:hover:before {
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
-      }
-      .side_bar ul a:hover:before {
-        border-radius: 6px;
-      }
-      .media_icons a:hover:before {
-        border-radius: 50%;
-      }
-      .side_bar ul a:hover {
-        color: #3498db;
-      }
+	<!-- Boxicons -->
+	<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
 
-      .media_icons a:nth-child(1) {
-        color: #4267b2;
-      }
-      .media_icons a:nth-child(2) {
-        color: #1da1f2;
-      }
-      .media_icons a:nth-child(3) {
-        color: #e1306c;
-      }
-      .media_icons a:nth-child(4) {
-        color: #ff0000;
-      }
-      label {
-        font-size: 17px;
-        color: #31344b;
-        box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
-        height: 37px;
-        width: 37px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 37px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      label:hover {
-        box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
-        color: #3498db;
-      }
-      #check {
-        display: none;
-      }
-      .bars {
-        position: absolute;
-        left: 15px;
-        top: 15px;
-      }
-      #check:checked ~ .side_bar {
-        left: 0;
-      }
-      #check:checked ~ .table-container {
-        margin-left: 17rem;
-        transition: 0.5s;
-      }
-    </style>
-  </head>
+	<!-- font awesom -->
+	<!-- fontawesom -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 
-  <body>
-    <input type="checkbox" id="check" />
-    <label class="button bars" for="check"><i class="fas fa-bars"></i></label>
-    <div class="side_bar">
-      <div class="title">
-        <div class="logo">Admin Panda</div>
-        <label class="button cancel" for="check"
-          ><i class="fas fa-times"></i
-        ></label>
-      </div>
+	<!-- datatable -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 
-      <div class="navbar">
-        <ul>
-          <li><a href="">table pengaduan </a></li>
-          <li><a href="#">tabel user</a></li>
-        </ul>
-      </div>
-    </div>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 
-    <div class="row">
-      <main th:insert="${content}"></main>
-    </div>
+	<!-- My CSS -->
+	<!-- <link rel="stylesheet" th:href="@{/style/layoutAdmin.css}" type="text/css" /> -->
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+	<link rel="stylesheet" href="/style/layoutadmin.css" />
+	<title th:replace="${title}">Admin panda</title>
+</head>
 
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#dataTable").DataTable({
-          searching: true, // Enable search feature
-        });
-      });
-    </script>
-  </body>
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class="bx bxs-smile"></i>
+			<span class="text">Admin panda</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a th:href="@{panda/admin}">
+					<i class="bx bxs-dashboard"></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="bx bx-user-pin"></i>
+					<span class="text">User</span>
+				</a>
+			</li>
+			<li>
+				<a th:href="@{panda/kelola}">
+					<i class="bx bxs-report"></i>
+					<span class="text">Aduan</span>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="#">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Message</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Team</span>
+				</a>
+			</li> -->
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class="bx bxs-cog"></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li> -->
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class="bx bx-menu"></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search..." />
+					<button type="submit" class="search-btn">
+						<i class="bx bx-search"></i>
+					</button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden />
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class="bx bxs-bell"></i>
+				<span class="num">8</span>
+			</a>
+			<div class="profile">
+				<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+					alt="" />
+				<ul class="profile-link">
+					<li>
+						<a href="#"><i class="bx bxs-user-circle icon"></i> Profile</a>
+					</li>
+					<li>
+						<a href="#"><i class="bx bxs-cog"></i> Settings</a>
+					</li>
+					<li>
+						<a href="#"><i class="bx bxs-log-out-circle"></i> Logout</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		
+			<!-- Main Content -->
+			<main th:insert="${content}"></main>
+		
+	</section>
+	
+	<!-- CONTENT -->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+	<!-- DataTables JS -->
+	<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#dataTable").DataTable({
+				searching: true, // Enable search feature
+			});
+		});
+	</script>
+
+	<!-- script js -->
+	<script src="/js/admin.js"></script>
+</body>
+
 </html>
