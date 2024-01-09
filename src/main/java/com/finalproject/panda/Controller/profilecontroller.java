@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/panda")
-public class profilecontroller {
+public class ProfileController {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
@@ -45,7 +45,6 @@ public class profilecontroller {
                 model.addAttribute("fotoPath", fotoPath.toString());
 
                 model.addAttribute("user", loggedInUser);
-                // session.setAttribute("loggedInUser", user);
 
                 return "User/ProfileUser";
             } else {
