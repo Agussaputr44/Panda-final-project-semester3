@@ -25,8 +25,13 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String login() {
-        return "User/LoginPage";
+    public String login(Model model) {
+        try {
+            User user = new User();
+            model.addAttribute("user", user);
+        } catch (Exception e) {
+        }
+        return "User/LoginNew";
     }
 
     @PostMapping("/login")
@@ -84,11 +89,7 @@ public class UserController {
 
     @GetMapping("/daftar")
     public String daftarPage(Model model) {
-        try {
-            User user = new User();
-            model.addAttribute("user", user);
-        } catch (Exception e) {
-        }
+        
         return "User/login";
     }
 
