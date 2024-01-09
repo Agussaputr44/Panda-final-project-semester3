@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" th:href="@{/style/style.css}" type="text/css" />
     <title>login daftar</title>
 </head>
 
@@ -75,10 +76,9 @@
                     </div>
 
                     <!-- foto -->
-                    <div class="input-foto">
-                        <!-- <label for="fotoFile">Foto:</label> -->
-                        <input type="file" id="fotoFile" name="fotoFile" accept="image/*" required
-                            style="width: 100%" />
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="file" id="fotoFile" class="form-control" name="fotoFile"6 accept="image/*" required />
                     </div>
                     <button type="submit" class="btn">Daftar</button>
                 </form>

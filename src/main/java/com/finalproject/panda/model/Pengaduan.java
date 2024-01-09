@@ -43,10 +43,6 @@ public class Pengaduan {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate TTL;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id")
-    private Status status;
-
     public void setCreated_at() {
         this.created_at = LocalDateTime.now();
     }

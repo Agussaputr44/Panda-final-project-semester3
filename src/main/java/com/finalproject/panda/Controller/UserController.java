@@ -25,8 +25,13 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String login() {
-        return "User/LoginPage";
+    public String login(Model model) {
+        try {
+            User user = new User();
+            model.addAttribute("user", user);
+        } catch (Exception e) {
+        }
+        return "User/LoginNew";
     }
 
     @PostMapping("/login")
@@ -84,11 +89,7 @@ public class UserController {
 
     @GetMapping("/daftar")
     public String daftarPage(Model model) {
-        try {
-            User user = new User();
-            model.addAttribute("user", user);
-        } catch (Exception e) {
-        }
+        
         return "User/login";
     }
 
@@ -109,34 +110,6 @@ public class UserController {
         }
         return "redirect:/panda/login";
     }
-
-    // @PostMapping("/update")
-    // public String updateProfile(Model model, @RequestParam("fotoFile")
-    // MultipartFile fotoFile,
-    // HttpSession session, User updatedUser) {
-    // try {
-    // User currentUser = (User) session.getAttribute("loggedInUser");
-
-    // currentUser.setNama_lengkap(updatedUser.getNama_lengkap());
-    // currentUser.setAlamat(updatedUser.getAlamat());
-    // currentUser.setNomor_hp(updatedUser.getNomor_hp());
-
-    // if (fotoFile != null && !fotoFile.isEmpty()) {
-    // byte[] fotoBytes = fotoFile.getBytes();
-    // currentUser.setFoto(fotoBytes);
-    // }
-
-    // model.addAttribute("user", currentUser);
-    // userService.saveUser(currentUser);
-
-    // model.addAttribute("successMessage", "Profile updated successfully");
-    // } catch (Exception e) {
-    // model.addAttribute("errorMessage", "An error occurred while updating the
-    // profile");
-    // e.printStackTrace();
-    // }
-    // return "redirect:/panda/pengaduan";
-    // }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
