@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 
-    <link rel="shortcut icon" href="">
-    
+  <link rel="shortcut icon" href="/img/logopanda.png">
+
   <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css" />
   <link rel="stylesheet" href="assets/css/animated.css" />
   <link rel="stylesheet" href="assets/css/owl.css" />
@@ -37,7 +37,7 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="index.html" class="logo">
-              <img src="/img/logo3coy.png" alt="panda" style="width: 150px; margin: 5px; margin-right: 90px;"  />
+              <img src="/img/logo3coy.png" alt="panda" style="width: 150px; margin: 5px; margin-right: 90px;" />
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -50,7 +50,8 @@
               </li>
               <li>
                 <div class="gradient-button">
-                  <a th:href="@{/panda/login}" style="margin: 5px;" id="modal_trigger" href=""><i class="fa fa-sign-in-alt"></i> Login</a>
+                  <a th:href="@{/panda/login}" style="margin: 5px;" id="modal_trigger" href=""><i
+                      class="fa fa-sign-in-alt"></i> Login</a>
                 </div>
               </li>
             </ul>
@@ -76,7 +77,7 @@
                   <div class="col-lg-12">
                     <h1 style="font-size: 36px">PANDA</h1>
                     <h2 style="font-size: 24px">
-                      Pusat Aduan Anak Dan Perempuan
+                      <span class="auto-input"></span>
                     </h2>
                     <p style="text-align: justify">
                       PANDA (Pusat Aduan Perempuan Dan Anak) dapat
@@ -176,7 +177,7 @@
                 pengaduan ke pihak UPT PPA.
               </p>
               <div class="gradient-button">
-                <a th:href="@{/login}">Login</a>
+                <a th:href="@{/panda/login}">Login</a>
               </div>
               <span>*Silakan login terlebih dahulu untuk melakukan laporan</span>
             </div>
@@ -257,99 +258,101 @@
   </div>
 
 
-<!-- profile team -->
-<section id="team">
-      <h1 class="headingg">
-          <i class="fas fa-rocket"></i><strong>Team</strong>
-      </h1>
-      <div class="container5">
-          <div class="box">
-              <div class="top-bar">
-              </div>
-                  <div class="navv">
-                      <i class="verify fas fa-check-circle"></i>
-                      <input type="checkbox" class="heart-btn" id="heart-btn">
-                      <label  class="heart"></label>
-                  </div>
+  <!-- profile team -->
+  <section id="team">
+    <h1 class="headingg">
+      <i class="fas fa-rocket"></i><strong>Team</strong>
+    </h1>
+    <div class="container5">
+      <div class="box">
+        <div class="top-bar">
+        </div>
+        <div class="navv">
+          <i class="verify fas fa-check-circle"></i>
+          <input type="checkbox" class="heart-btn" id="heart-btn">
+          <label class="heart"></label>
+        </div>
 
-                  <div class="detailss">
-                      <img src="img/agus-profile.jpeg" alt="">
-                      <strong>Agus saputra</strong>
-                      <p>agusptr44@gmail.com</p>
-                  </div>
+        <div class="detailss">
+          <img src="img/agus-profile.jpeg" alt="">
+          <strong>Agus saputra</strong>
+          <p>agusptr44@gmail.com</p>
+        </div>
 
-                  <div class="btnn">
-                      <a href="#"><i class="fab fa-facebook-f"></i></a>
-                      <a href="#"><i class="fab fa-twitter"></i></a>
-                      <a href="https://www.instagram.com/agusptraa"><i class="fab fa-instagram"></i></a>
-                      <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
-                  </div>
-              </div>
-          <div class="box">
-              <div class="top-bar"></div>
-                  <div class="navv">
-                      <i class="verify fas fa-check-circle"></i>
-                      <input type="checkbox" class="heart-btn" id="heart-btn">
-                      <label  class="heart"></label>
-                  </div>
-
-                  <div class="detailss">
-                    <img src="img/andri-profile.jpg" alt="">
-                    <strong>Andri Ahmad</strong>
-                    <p>andriahmad9938@gmail.com</p>
-                </div>
-
-                <div class="btnn">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/andri-ahmad-1794822a3/"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/andri_ahmad09"><i class="fab fa-instagram"></i></a>
-                    <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
-                </div>
-              </div>
-          <div class="box">
-              <div class="top-bar"></div>
-                  <div class="navv">
-                      <i class="verify fas fa-check-circle"></i>
-                      <input type="checkbox" class="heart-btn" id="heart-btn">
-                      <label  class="heart"></label>
-                  </div>
-
-                  <div class="detailss">
-                    <img src="img/bayudani.jpg" alt="">
-                    <strong>Bayu Dani Kurniawan</strong>
-                    <p>Bayu22122017@gmail.com</p>
-                </div>
-
-                <div class="btnn">
-                    <a href="https://web.facebook.com/bayudani.kurniawan"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/bayu-dani-kurniawan-undefined-b0792a2a4/"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/bayukrnw_n/"><i class="fab fa-instagram"></i></a>
-                    <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
-                </div>
-                </div>
-          <div class="box">
-              <div class="top-bar"></div>
-                  <div class="navv">
-                      <i class="verify fas fa-check-circle"></i>
-                      <input type="checkbox" class="heart-btn" id="heart-btn">
-                      <label  class="heart"></label>
-                  </div>
-
-                  <div class="detailss">
-                    <img src="img/dewi3_profile.jpg" alt="">
-                    <strong>Dewi Sartika Siahaan</strong>
-                    <p>dewisartikasiahaan515@gmail.com</p>
-                </div>
-
-                <div class="btnn">
-                    <a href="https://www.facebook.com/DewiSartikaSiahaan080804?mibextid=JRoKGi"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/Tikasiahaan_"><i class="fab fa-instagram"></i></a>
-                    <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
-                </div>
-              
-          </div>
+        <div class="btnn">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/agusptraa"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+        </div>
       </div>
+      <div class="box">
+        <div class="top-bar"></div>
+        <div class="navv">
+          <i class="verify fas fa-check-circle"></i>
+          <input type="checkbox" class="heart-btn" id="heart-btn">
+          <label class="heart"></label>
+        </div>
+
+        <div class="detailss">
+          <img src="img/andri-profile.jpg" alt="">
+          <strong>Andri Ahmad</strong>
+          <p>andriahmad9938@gmail.com</p>
+        </div>
+
+        <div class="btnn">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/andri-ahmad-1794822a3/"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/andri_ahmad09"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+        </div>
+      </div>
+      <div class="box">
+        <div class="top-bar"></div>
+        <div class="navv">
+          <i class="verify fas fa-check-circle"></i>
+          <input type="checkbox" class="heart-btn" id="heart-btn">
+          <label class="heart"></label>
+        </div>
+
+        <div class="detailss">
+          <img src="img/bayudani.jpg" alt="">
+          <strong>Bayu Dani Kurniawan</strong>
+          <p>Bayu22122017@gmail.com</p>
+        </div>
+
+        <div class="btnn">
+          <a href="https://web.facebook.com/bayudani.kurniawan"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/bayu-dani-kurniawan-undefined-b0792a2a4/"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/bayukrnw_n/"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+        </div>
+      </div>
+      <div class="box">
+        <div class="top-bar"></div>
+        <div class="navv">
+          <i class="verify fas fa-check-circle"></i>
+          <input type="checkbox" class="heart-btn" id="heart-btn">
+          <label class="heart"></label>
+        </div>
+
+        <div class="detailss">
+          <img src="img/dewi3_profile.jpg" alt="">
+          <strong>Dewi Sartika Siahaan</strong>
+          <p>dewisartikasiahaan515@gmail.com</p>
+        </div>
+
+        <div class="btnn">
+          <a href="https://www.facebook.com/DewiSartikaSiahaan080804?mibextid=JRoKGi"><i
+              class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/Tikasiahaan_"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+        </div>
+
+      </div>
+    </div>
   </section>
 
 
@@ -364,7 +367,7 @@
             <p>Email: Kelompok1@gmail.com</p>
             <i class="fa-solid fa-location-dot"></i>
             <p>Jl.Bathin alam,Bengkalis</p>
-            
+
           </div>
         </div>
         <div class="col-6 p-5" style="align-items: end;">
@@ -391,8 +394,18 @@
     </div>
   </footer>
 
-  
- 
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    let typed = new Typed(".auto-input", {
+      strings: ["Pusat Aduan Anak Dan Perempuan"],
+      typeSpeed: 90,
+      // backSpeed: 60,
+      loop: true
+    })
+  </script>
+
   <!-- Scripts -->
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
