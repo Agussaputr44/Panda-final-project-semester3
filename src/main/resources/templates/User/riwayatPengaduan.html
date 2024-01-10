@@ -50,26 +50,24 @@
               <th>Action</th>
             </tr>
           </thead>
-          <!-- Assuming the list of complaints is stored in the "pengaduan" variable -->
-          <!-- Assuming the list of complaints is stored in the "pengaduan" variable -->
           <tbody>
-            <tr th:each="complaint : ${pengaduan}">
-              <td th:text="${complaint.user.nama_lengkap}"></td>
-              <td th:text="${complaint.pekerjaan}"></td>
-              <td th:text="${complaint.user.alamat}"></td>
-              <td th:text="${complaint.pendidikan}"></td>
-              <td th:text="${complaint.aduan}"></td>
-              <td th:text="${complaint.harapan}"></td>
+            <tr th:each="p : ${pengaduan}">
+              <td th:text="${p.user.nama_lengkap}"></td>
+              <td th:text="${p.pekerjaan}"></td>
+              <td th:text="${p.user.alamat}"></td>
+              <td th:text="${p.pendidikan}"></td>
+              <td th:text="${p.aduan}"></td>
+              <td th:text="${p.harapan}"></td>
               <td>
                 <a
-                  th:href="@{/panda/edit/{id_register}(id_register=${complaint.id_registrasi})}"
+                  th:href="@{/panda/edit/{id_register}(id_register=${p.id_registrasi})}"
                 >
                   <button class="btn btn-info btn-sm">
                     <i class="fas fa-edit mr-1"></i>Edit
                   </button>
                 </a>
                 <a
-                  th:href="@{/panda/delete/{id_register}(id_register=${complaint.id_registrasi})}"
+                  th:href="@{/panda/delete/{id_register}(id_register=${p.id_registrasi})}"
                 >
                   <button class="btn btn-danger btn-sm">
                     <i class="fas fa-trash-alt mr-1"></i>Delete

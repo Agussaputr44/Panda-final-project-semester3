@@ -49,4 +49,5 @@ public class PengaduanController {
         pengaduanService.deletePengaduan(id_registrasi);
         return "redirect:/panda/riwayat"; 
     }
+   
 }

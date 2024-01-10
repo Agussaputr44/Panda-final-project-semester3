@@ -16,100 +16,103 @@
           <h1>Dashboard</h1>
           <ul class="breadcrumb">
             <li>
-              <a href="#">Dashboard</a>
+              <a>Dashboard</a>
             </li>
             <li><i class="bx bx-chevron-right"></i></li>
             <li>
-              <a class="active" href="#">Home</a>
+              <a class="active">Home</a>
             </li>
           </ul>
         </div>
-        <a href="#" class="btn-download">
-          <i class="bx bxs-cloud-download"></i>
-          <span class="text">Download PDF</span>
-        </a>
       </div>
 
       <ul class="box-info">
         <li>
           <i class="bx bxs-calendar-check"></i>
           <span class="text">
-            <h3>1020</h3>
-            <p>Jumlah aduan bulan ini</p>
+            <h3 th:text="${jumlahPengaduanBulanIni}"></h3>
+            <p>Pengaduan bulan ini</p>
           </span>
         </li>
         <li>
           <i class="bx bxs-report"></i>
           <span class="text">
-            <h3>2834</h3>
-            <p>Total Aduan</p>
+            <h3 th:text="${jumlahPengaduan}"></h3>
+            <p>Total Pengaduan</p>
           </span>
         </li>
         <li>
           <i class="bx bxs-group"></i>
           <span class="text">
-            <h3>20</h3>
-            <p>Total pengguna</p>
+            <h3 th:text="${jumlahUser}"></h3>
+            <p>Total Pengguna</p>
           </span>
         </li>
       </ul>
 
+      <!-- tabel user -->
       <div class="table-data">
         <div class="order">
           <div class="head">
-            <h3>Aduan</h3>
+            <h3>Pengguna</h3>
             <i class="bx bx-search"></i>
             <i class="bx bx-filter"></i>
           </div>
           <table>
             <thead>
               <tr>
-                <th>User</th>
-                <th>Date Order</th>
-                <th>Status</th>
+                <th>NIK</th>
+                <th>Nama lengkap</th>
+                <th>Alamat</th>
+                <th>No Hp</th>
+                <th>Action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody th:each="u : ${user}">
+              <td th:text="${u.nik}"></td>
+              <td th:text="${u.nama_lengkap}"></td>
+              <td th:text="${u.alamat}"></td>
+              <td th:text="${u.nomor_hp}"></td>
+              <td>
+                <button>Edit</button>
+                <button class="delete">Delete</button>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- tabel pengaduan -->
+      <div class="table-data">
+        <div class="order">
+          <div class="head">
+            <h3>Pengaduan</h3>
+            <i class="bx bx-search"></i>
+            <i class="bx bx-filter"></i>
+          </div>
+          <table>
+            <thead>
               <tr>
-                <td>
-                  <img src="img/people.png" />
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status completed">Completed</span></td>
+                <th>Nama</th>
+                <th>Tanggal Pengaduan</th>
+                <th>Pengaduan</th>
+                <th>Harapan</th>
+                <th>Action</th>
               </tr>
-              <tr>
-                <td>
-                  <img src="img/people.png" />
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">Pending</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="img/people.png" />
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status process">Process</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="img/people.png" />
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">Pending</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="img/people.png" />
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status completed">Completed</span></td>
-              </tr>
+            </thead>
+            <tbody th:each="p : ${pengaduan}">
+              <td th:text="${p.nama}"></td>
+              <td th:text="${p.created_at}"></td>
+              <td th:text="${p.aduan}"></td>
+              <td th:text="${p.harapan}"></td>
+              <td>
+                <a th:href="@{/panda/edit}">
+                  <button>Edit</button>
+                </a>
+                <a th:href="@{/panda/admin/delete/{id_register}(id_register=${p.id_registrasi})}">
+                  <button class="delete">Delete</button>
+                </a>
+              </td>
             </tbody>
           </table>
         </div>
