@@ -45,7 +45,6 @@ public class profilecontroller {
                 model.addAttribute("fotoPath", fotoPath.toString());
 
                 model.addAttribute("user", loggedInUser);
-                // session.setAttribute("loggedInUser", user);
 
                 return "User/ProfileUser";
             } else {

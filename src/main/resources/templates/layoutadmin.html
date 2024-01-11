@@ -29,9 +29,9 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 
 	<!-- My CSS -->
-	<!-- <link rel="stylesheet" th:href="@{/style/layoutAdmin.css}" type="text/css" /> -->
+	<link rel="stylesheet" th:href="@{/style/layoutAdmin.css}" type="text/css" />
 
-	<link rel="stylesheet" href="/style/layoutadmin.css" />
+	<!-- <link rel="stylesheet" href="/style/layoutadmin.css" /> -->
 	<title th:replace="${title}">Admin panda</title>
 </head>
 
@@ -49,8 +49,8 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
-				<a href="#">
+			<li class="active">
+				<a th:href="@{/panda/kelola}">
 					<i class="bx bx-user-pin"></i>
 					<span class="text">User</span>
 				</a>
