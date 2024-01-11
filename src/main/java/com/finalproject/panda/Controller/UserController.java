@@ -42,14 +42,13 @@ public class UserController {
         User user = userService.checkLogin(nik, password);
         if (user != null) {
 
-            if (nik.equals("0000") && password.equals("0000")) {
+            if (user.getNik().equals("0000")) {
 
                 model.addAttribute("user", user);
                 session.setAttribute("loggedInUser", user);
 
                 return "redirect:/panda/admin/dashboard";
             } else {
-                model.addAttribute("loginError", "false");
                 model.addAttribute("user", user);
                 session.setAttribute("loggedInUser", user);
                 return "redirect:/panda/pengaduan";
