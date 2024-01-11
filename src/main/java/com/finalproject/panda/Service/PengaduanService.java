@@ -74,4 +74,12 @@ public class PengaduanService {
         return null;
         
     }
+
+    public long jumlahPengaduan(){
+        return pengaduanRepo.count();
+    }
+
+    public long jumlahPengaduanBulanIni() {
+        return pengaduanRepo.countByMonth();
+    }
 }

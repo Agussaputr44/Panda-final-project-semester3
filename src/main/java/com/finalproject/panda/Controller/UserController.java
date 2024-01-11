@@ -21,8 +21,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-        private static final Logger log = LoggerFactory.getLogger(UserService.class);
-
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -34,6 +33,7 @@ public class UserController {
         return "User/LoginNew";
     }
 
+    
     @PostMapping("/login")
     public String loginSuccess(
             @RequestParam String nik,
@@ -41,10 +41,19 @@ public class UserController {
             Model model, HttpSession session) {
         User user = userService.checkLogin(nik, password);
         if (user != null) {
-            model.addAttribute("loginError", "false");
-            model.addAttribute("user", user);
-            session.setAttribute("loggedInUser", user);
-            return "redirect:/panda/pengaduan";
+
+            if (nik.equals("0000") && password.equals("0000")) {
+
+                model.addAttribute("user", user);
+                session.setAttribute("loggedInUser", user);
+
+                return "redirect:/panda/admin/dashboard";
+            } else {
+                model.addAttribute("loginError", "false");
+                model.addAttribute("user", user);
+                session.setAttribute("loggedInUser", user);
+                return "redirect:/panda/pengaduan";
+            }
         } else {
             model.addAttribute("loginError", "true");
             return "redirect:/panda/login";
@@ -71,7 +80,7 @@ public class UserController {
                 userService.saveUser(currentUser);
 
                 model.addAttribute("user", currentUser);
-                        log.info(currentUser.getNama_lengkap() + " berhasil update profile");
+                log.info(currentUser.getNama_lengkap() + " berhasil update profile");
 
                 model.addAttribute("successMessage", "Profile updated successfully");
                 return "redirect:/panda/profile";
@@ -89,7 +98,6 @@ public class UserController {
 
     @GetMapping("/daftar")
     public String daftarPage(Model model) {
-        
         return "User/login";
     }
 
@@ -102,7 +110,7 @@ public class UserController {
             }
 
             userService.saveUser(users);
-        log.info(users.getNama_lengkap() + " berhasil mendaftar");
+            log.info(users.getNama_lengkap() + " berhasil mendaftar");
 
             model.addAttribute("user", users);
         } catch (Exception e) {
