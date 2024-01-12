@@ -5,11 +5,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>admin page</title>
+  <title>Admin</title>
 
   <!-- boostrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
   <!-- swet alert -->
 
@@ -68,30 +68,23 @@
         <table id="datatable">
           <thead>
             <tr>
-              <th></th>
               <th>NIK</th>
               <th>Nama lengkap</th>
               <th>Alamat</th>
               <th>No Hp</th>
-              <th>Action</th>
-              
             </tr>
           </thead>
           <tbody th:each="u : ${user}">
-            <td></td>
             <td th:text="${u.nik}"></td>
             <td th:text="${u.nama_lengkap}"></td>
             <td th:text="${u.alamat}"></td>
             <td th:text="${u.nomor_hp}"></td>
-            <td>
-              <button>Edit</button>
-              <button class="delete">Delete</button>
-            </td>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- tabel pengaduan -->
     <!-- tabel pengaduan -->
     <div class="table-data">
       <div class="order">
@@ -114,7 +107,7 @@
           </thead>
           <tbody th:each="p : ${pengaduan}">
             <td></td>
-            <td  th:text="${p.nama}"  ></td>
+            <td th:text="${p.nama}"></td>
             <td th:text="${p.created_at}"></td>
             <td th:text="${p.aduan}"></td>
             <td th:text="${p.harapan}"></td>
@@ -133,17 +126,17 @@
                 th:attr="data-bs-target='#exampleModal' + *{id_register}">
                 Simpan perubahan
               </button>
-              <a th:href="@{/panda/admin/delete/{id_register}(id_register=${p.id_registrasi})}">
+              <a th:href="@{/panda/admin/delete/{id_register}(id_register=${p.id_registrasi})}"
+                onclick="return confirm('Apakah anda yakin menghapus aduan ini?');">
                 <button class="delete">Delete</button>
               </a>
             </td>
-
           </tbody>
         </table>
       </div>
     </div>
-  </section>
 
+  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

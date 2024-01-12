@@ -31,18 +31,25 @@ public class AdminController {
     private UserService userService;
 
     @GetMapping("/admin/dashboard")
-    public String admin(Model model) {
+    public String admin(Model model, HttpSession session) {
         List<Pengaduan> pengaduan = pengaduanService.getAllPengaduan();
         List<User> user = userService.getAll();
         long jumlahPengaduan = pengaduanService.jumlahPengaduan();
         long jumlahPengaduanBulanIni = pengaduanService.jumlahPengaduanBulanIni();
         long jumlahUser = userService.jumlahUser();
-        model.addAttribute("user", user);
-        model.addAttribute("pengaduan", pengaduan);
-        model.addAttribute("jumlahPengaduan", jumlahPengaduan);
-        model.addAttribute("jumlahPengaduanBulanIni", jumlahPengaduanBulanIni);
-        model.addAttribute("jumlahUser", jumlahUser);
-        return "admin/dasboard";
+        User loggedInUser = (User)session.getAttribute("loggedInUser");
+
+        if(loggedInUser != null){
+
+            model.addAttribute("user", user);
+            model.addAttribute("pengaduan", pengaduan);
+            model.addAttribute("jumlahPengaduan", jumlahPengaduan);
+            model.addAttribute("jumlahPengaduanBulanIni", jumlahPengaduanBulanIni);
+            model.addAttribute("jumlahUser", jumlahUser);
+            return "admin/dasboard";
+        }else{
+            return "redirect:/panda/login";
+        }
     }
 
     @GetMapping("/admin/delete/{id_register}")
