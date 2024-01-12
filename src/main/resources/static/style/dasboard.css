@@ -505,6 +505,7 @@ nav .profile .profile-link a:hover {
 #content main .table-data .order table tr td .status {
 	font-size: 10px;
 	padding: 6px 16px;
+	/* background: #3C91E6; */
 	color: var(--light);
 	border-radius: 20px;
 	font-weight: 700;

@@ -14,6 +14,8 @@ import com.finalproject.panda.Service.UserService;
 import com.finalproject.panda.model.Pengaduan;
 import com.finalproject.panda.model.User;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/panda")
 public class adminController {
@@ -43,5 +45,13 @@ public class adminController {
     public String deleteByAdmin(@PathVariable("id_register") Integer id_registrasi) {
         pengaduanService.deletePengaduan(id_registrasi);
         return "redirect:/panda/admin/dashboard"; 
+    }
+
+      @GetMapping("/logoutt")
+    public String logout(HttpServletRequest request) {
+        if (request.getParameter("logout") != null) {
+            request.getSession().invalidate();
+        }
+        return "redirect:/";
     }
 }
