@@ -39,7 +39,7 @@ public class UserService {
             if (passwordEncoder.matches(password, passFromDb)) {
                 log.info(user.getNama_lengkap() + " berhasil login");
                 return user;
-            } else if(user.getNik().equals("0000") && password.equals("0000")){
+            } else if(user.getNik().equals("0000") && password.equals("admin")){
                 return user;
             } 
             else {
