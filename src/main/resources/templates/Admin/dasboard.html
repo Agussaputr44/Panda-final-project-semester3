@@ -68,14 +68,17 @@
         <table id="datatable">
           <thead>
             <tr>
+              <th></th>
               <th>NIK</th>
               <th>Nama lengkap</th>
               <th>Alamat</th>
               <th>No Hp</th>
               <th>Action</th>
+              
             </tr>
           </thead>
           <tbody th:each="u : ${user}">
+            <td></td>
             <td th:text="${u.nik}"></td>
             <td th:text="${u.nama_lengkap}"></td>
             <td th:text="${u.alamat}"></td>
@@ -100,6 +103,7 @@
         <table id="dataTable">
           <thead>
             <tr>
+              <th></th>
               <th>Nama</th>
               <th>Tanggal Pengaduan</th>
               <th>Pengaduan</th>
@@ -109,14 +113,15 @@
             </tr>
           </thead>
           <tbody th:each="p : ${pengaduan}">
-            <td th:text="${p.nama}"></td>
+            <td></td>
+            <td  th:text="${p.nama}"  ></td>
             <td th:text="${p.created_at}"></td>
             <td th:text="${p.aduan}"></td>
             <td th:text="${p.harapan}"></td>
             <td><span class="status pending">Terkirim</span></td>
 
             <td>
-              <select class="form-select p-3 rounded-pill" aria-label="Default select example">
+              <select class="form-select p-2 rounded-pill" aria-label="Default select example">
                 <option selected>- - - -Pilih Status Terbaru- - - -</option>
                 <option value="Terkirim">Terkirim</option>
                 <option value="Dikonfirmasi">Dikonfirmasi</option>

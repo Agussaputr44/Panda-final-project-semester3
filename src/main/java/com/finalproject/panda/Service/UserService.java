@@ -23,6 +23,7 @@ public class UserService {
     public List<User> getAll(){
         return userRepo.findAll();
     }
+    
     public User saveUser(User users) {
         User saveUser = userRepo.save(users);
         return saveUser;
