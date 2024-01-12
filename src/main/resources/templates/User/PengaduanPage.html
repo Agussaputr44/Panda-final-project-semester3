@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"  th:replace="~{layout :: layout(~{::title}, ~{::div#content}, 'pengaduan')}"
-xmlns:th="http://www.thymeleaf.org">
+<html
+  lang="en"
+  th:replace="~{layout :: layout(~{::title}, ~{::div#content}, 'pengaduan')}"
+  xmlns:th="http://www.thymeleaf.org"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,9 +16,6 @@ xmlns:th="http://www.thymeleaf.org">
   </head>
 
   <body class="bg-gray-100">
-
-
-
     <!-- Form start -->
     <div id="content" class="container mt-8">
       <div class="flex flex-col md:flex-row items-center justify-center">
@@ -61,6 +61,7 @@ xmlns:th="http://www.thymeleaf.org">
                   th:field="*{nama}"
                   class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500"
                   placeholder="Nama lengkap"
+                  
                   required
                 />
               </div>
