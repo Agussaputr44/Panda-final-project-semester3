@@ -16,18 +16,18 @@ import com.finalproject.panda.model.User;
 
 @Controller
 @RequestMapping("/panda")
-public class adminController {
+public class AdminController {
 
     @Autowired
     private PengaduanService pengaduanService;
-    
+
     @Autowired
     private UserService userService;
 
     @GetMapping("/admin/dashboard")
-    public String admin (Model model){
-        List <Pengaduan> pengaduan = pengaduanService.getAllPengaduan();
-        List <User> user = userService.getAll();
+    public String admin(Model model) {
+        List<Pengaduan> pengaduan = pengaduanService.getAllPengaduan();
+        List<User> user = userService.getAll();
         long jumlahPengaduan = pengaduanService.jumlahPengaduan();
         long jumlahPengaduanBulanIni = pengaduanService.jumlahPengaduanBulanIni();
         long jumlahUser = userService.jumlahUser();
@@ -39,9 +39,10 @@ public class adminController {
         return "admin/dasboard";
     }
 
-     @GetMapping("/admin/delete/{id_register}")
+    @GetMapping("/admin/delete/{id_register}")
     public String deleteByAdmin(@PathVariable("id_register") Integer id_registrasi) {
         pengaduanService.deletePengaduan(id_registrasi);
-        return "redirect:/panda/admin/dashboard"; 
+        return "redirect:/panda/admin/dashboard";
     }
+
 }
