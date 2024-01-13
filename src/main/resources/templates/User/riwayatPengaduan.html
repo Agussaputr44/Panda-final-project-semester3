@@ -1,89 +1,81 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  th:replace="~{layoutProfile :: layoutProfile(~{::title}, ~{::div#content}, 'riwayatpengduan')}"
->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="" />
-    <title>Riwayat Pengaduan Anda</title>
-    <style>
+<html lang="en" th:replace="~{layoutProfile :: layoutProfile(~{::title}, ~{::div#content}, 'riwayatpengduan')}">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="" />
+  <title>Riwayat Pengaduan Anda</title>
+  <style>
+    .table {
+      width: 100%;
+      padding: 1.5em;
+    }
+
+    /* Gaya untuk layar yang lebih kecil (misalnya, ponsel) */
+    @media (max-width: 768px) {
       .table {
-        width: 100%;
-        padding: 1.5em;
+        font-size: 0.9em;
+        width: 10px;
       }
-      /* Gaya untuk layar yang lebih kecil (misalnya, ponsel) */
-      @media (max-width: 768px) {
-        .table {
-          font-size: 0.9em;
-          width: 10px;
-        }
 
-        th,
-        td {
-          white-space: nowrap; /* Cegah teks terpotong dalam sel */
-          overflow: hidden;
-          text-overflow: ellipsis; /* Tambahkan tanda ellipsis untuk teks panjang */
-        }
+      th,
+      td {
+        white-space: nowrap;
+        /* Cegah teks terpotong dalam sel */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Tambahkan tanda ellipsis untuk teks panjang */
       }
-      
-    </style>
-  </head>
-  <body>
-    <div id="content" class="container-xl px-4 mt-4">
-      
+    }
+  </style>
+</head>
 
-      <!-- Add Data Button -->
-      <!-- <a th:href="@{/employers/new}"> -->
+<body>
+  <div id="content" class="container-xl px-4 mt-4">
 
-        <div class="table-data">
-          <div class="order">
-            <div class="head">
-              <h2>Riwayat pengaduan</h2>
-              <i class="bx bx-search"></i>
-              <i class="bx bx-filter"></i>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Nama</th>
-                  <th>Tanggal Pengaduan</th>
-                  <th>Pengaduan</th>
-                  <th>Harapan</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody th:each="p : ${pengaduan}">
-                <td th:text="${p.nama}"></td>
-                <td th:text="${p.created_at}"></td>
-                <td th:text="${p.aduan}"></td>
-                <td th:text="${p.harapan}"></td>
-                <td><span class="status pending">Terikirm</span>
-                  <!-- <a
-                    th:href="@{/panda/edit/{id_register}(id_register=${p.id_registrasi})}"
-                  >
-                    <button class="btn btn-info btn-sm">
-                      <i class="fas fa-edit mr-1"></i>Edit
-                    </button>
-                  </a> -->
-                </td>
-                  <td>
-                    <a
-                    th:href="@{/panda/delete/{id_register}(id_register=${p.id_registrasi})}"
-                  >
-                    <button class="btn btn-danger btn-sm">
-                      <i class="fas fa-trash-alt mr-1"></i>Delete
-                    </button>
-                  </a>
-                  </td>
-                
-                
+
+    <!-- Add Data Button -->
+    <!-- <a th:href="@{/employers/new}"> -->
+
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h2>Riwayat pengaduan</h2>
+          <i class="bx bx-search"></i>
+          <i class="bx bx-filter"></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Tanggal Pengaduan</th>
+              <th>Pengaduan</th>
+              <th>Harapan</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody th:each="p : ${pengaduan}">
+            <td th:text="${p.nama}"></td>
+            <td th:text="${p.created_at}"></td>
+            <td th:text="${p.aduan}"></td>
+            <td th:text="${p.harapan}"></td>
+            <td><span class="status pending">Terikirm</span>
+            </td>
+            <td>
+              <a th:href="@{/panda/delete/{id_register}(id_register=${p.id_registrasi})}"
+                onclick="return confirm('Apakah anda yakin menghapus aduan ini?');">
+                <button class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash-alt mr-1"></i>Delete
+                </button>
+              </a>
+            </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </body>
+</body>
+
 </html>

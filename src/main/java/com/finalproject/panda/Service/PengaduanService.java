@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.finalproject.panda.Repository.PengaduanRepo;
+import com.finalproject.panda.Repository.StatusRepo;
 import com.finalproject.panda.model.Pengaduan;
+import com.finalproject.panda.model.Status;
 import com.finalproject.panda.model.User;
 
 @Service
@@ -19,6 +21,8 @@ public class PengaduanService {
 
     @Autowired
     private PengaduanRepo pengaduanRepo;
+    @Autowired
+    private StatusService statusService;
 
     @Autowired
     private UserService userService;
@@ -29,6 +33,8 @@ public class PengaduanService {
 
     public Pengaduan savePengaduan(Pengaduan pengaduan, User user) {
         User user1 = userService.getUserByNik(user.getNik());
+        List<Status> all = statusService.getAll();
+        pengaduan.setStatus(all.get(0));
         pengaduan.setCreated_at(LocalDateTime.now());
         pengaduan.setUser(user1);
         Pengaduan savedPengaduan = pengaduanRepo.save(pengaduan);
@@ -72,6 +78,12 @@ public class PengaduanService {
         }
 
         return null;
+        
+    }
+    public Status getStatusByIdRegister(Integer id_register){
+       Pengaduan pengaduan = getPengaduanById(id_register);
+       return pengaduan.getStatus();
+
         
     }
 
