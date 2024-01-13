@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.finalproject.panda.Service.PengaduanService;
+import com.finalproject.panda.Service.StatusService;
 import com.finalproject.panda.Service.UserService;
 import com.finalproject.panda.model.Pengaduan;
+import com.finalproject.panda.model.Status;
 import com.finalproject.panda.model.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +29,9 @@ public class ProfileController {
 
     @Autowired
     private PengaduanService pengaduanService;
+
+    @Autowired
+    private StatusService statusService;
 
     @GetMapping("/profile")
     public String profile(Model model, HttpSession session, User user) {
@@ -67,6 +72,7 @@ public class ProfileController {
                 List<Pengaduan> pengaduanList = pengaduanService.getPengaduanByNik(loggedInUser.getNik());
 
                 model.addAttribute("user", loggedInUser);
+                // model.addAttribute("status", status);
                 model.addAttribute("pengaduan", pengaduanList);
 
                 return "User/RiwayatPengaduan";
