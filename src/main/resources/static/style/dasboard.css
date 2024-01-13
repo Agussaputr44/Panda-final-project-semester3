@@ -307,9 +307,11 @@ nav .profile .profile-link a {
 	color: var(--dark);
 	align-items: center;
 	transition: all .3s ease;
+	text-decoration: none;
 }
 nav .profile .profile-link a:hover {
 	background: var(--grey);
+	text-decoration: none;
 }
 #content nav .switch-mode {
 	display: block;
@@ -319,6 +321,16 @@ nav .profile .profile-link a:hover {
 	background: var(--grey);
 	cursor: pointer;
 	position: relative;
+}
+
+.profile-link li a{
+	text-decoration: none;
+
+}
+
+
+.bx{
+	text-decoration: none;
 }
 #content nav .switch-mode::before {
 	content: '';
