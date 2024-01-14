@@ -322,6 +322,16 @@ nav .profile .profile-link a:hover {
 	cursor: pointer;
 	position: relative;
 }
+
+.profile-link li a{
+	text-decoration: none;
+
+}
+
+
+.bx{
+	text-decoration: none;
+}
 #content nav .switch-mode::before {
 	content: '';
 	position: absolute;

@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/panda")
-public class AdminController {
+public class adminController {
 
     @Autowired
     private PengaduanService pengaduanService;
@@ -90,6 +90,33 @@ public class AdminController {
                 model.addAttribute("user", loggedInUser);
 
                 return "Admin/profileAdmin";
+            } else {
+                return "redirect:/panda/login";
+            }
+        } catch (Exception e) {
+        }
+
+        return "redirect:/panda/login";
+    }
+
+    @GetMapping("/admin/editProfile")
+    public String editprofile(Model model, HttpSession session, User user) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+        try {
+            if (loggedInUser != null) {
+
+                byte[] fotoData = loggedInUser.getFoto();
+
+                Path fotoPath = Paths.get("src/main/resources/static/imgEncode/photo.jpg");
+
+                Files.write(fotoPath, fotoData);
+
+                model.addAttribute("fotoPath", fotoPath.toString());
+
+                model.addAttribute("user", loggedInUser);
+
+                return "Admin/EditProfileAdmin";
             } else {
                 return "redirect:/panda/login";
             }
