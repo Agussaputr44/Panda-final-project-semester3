@@ -44,8 +44,8 @@ public class PengaduanController {
         return "redirect:/panda/riwayat";
     }
 
-    @GetMapping("/delete/{id_register}")
-    public String deletePengaduan(@PathVariable("id_register") Integer id_registrasi) {
+    @GetMapping("/delete")
+    public String deletePengaduan(@RequestParam("id_register") Integer id_registrasi) {
         pengaduanService.deletePengaduan(id_registrasi);
         return "redirect:/panda/riwayat"; 
     }

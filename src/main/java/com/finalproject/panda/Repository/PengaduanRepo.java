@@ -9,7 +9,6 @@ import com.finalproject.panda.model.Pengaduan;
 
 public interface PengaduanRepo extends JpaRepository<Pengaduan, Integer> {
     List<Pengaduan> getByUserNik(String nik);
-    // List<Status> getStatus(String nik);
 
     @Query("SELECT COUNT(p) FROM pengaduan p WHERE MONTH(p.created_at) = MONTH(CURRENT_DATE) AND YEAR(p.created_at) = YEAR(CURRENT_DATE)")
     long countByMonth();

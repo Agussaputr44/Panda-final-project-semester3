@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.finalproject.panda.Service.PengaduanService;
-import com.finalproject.panda.Service.StatusService;
+// import com.finalproject.panda.Service.StatusService;
 import com.finalproject.panda.Service.UserService;
 import com.finalproject.panda.model.Pengaduan;
-import com.finalproject.panda.model.Status;
+// import com.finalproject.panda.model.Status;
 import com.finalproject.panda.model.User;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,13 +32,13 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private StatusService statusService;
+    // @Autowired
+    // private StatusService statusService;
     @GetMapping("/admin/dashboard")
     public String admin(Model model, HttpSession session) {
         List<Pengaduan> pengaduan = pengaduanService.getAllPengaduan();
         List<User> user = userService.getAll();
-        List<Status> status = statusService.getAll();
+        // List<Status> status = statusService.getAll();
         long jumlahPengaduan = pengaduanService.jumlahPengaduan();
         long jumlahPengaduanBulanIni = pengaduanService.jumlahPengaduanBulanIni();
         long jumlahUser = userService.jumlahUser();
@@ -47,7 +47,7 @@ public class AdminController {
         if(loggedInUser != null){
 
             model.addAttribute("user", user);
-            model.addAttribute("status", status);
+            // model.addAttribute("status", status);
             model.addAttribute("pengaduan", pengaduan);
             model.addAttribute("jumlahPengaduan", jumlahPengaduan);
             model.addAttribute("jumlahPengaduanBulanIni", jumlahPengaduanBulanIni);

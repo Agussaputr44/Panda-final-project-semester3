@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.finalproject.panda.Repository.PengaduanRepo;
-import com.finalproject.panda.Repository.StatusRepo;
 import com.finalproject.panda.model.Pengaduan;
 import com.finalproject.panda.model.Status;
+// import com.finalproject.panda.model.Status;
 import com.finalproject.panda.model.User;
+
+import lombok.NonNull;
 
 @Service
 public class PengaduanService {
@@ -41,36 +43,22 @@ public class PengaduanService {
         return savedPengaduan;
     }
 
-    public void deletePengaduan(Integer id) {
-        pengaduanRepo.deleteById(id);
-        log.info("pengaduan dengan id register: " + id + " berhasil di hapus");
+    public void deletePengaduan(@NonNull Integer id_registrasi) {
+        log.info("Deleting pengaduan with id register: " + id_registrasi);
+        
+        try {
+            pengaduanRepo.deleteById(id_registrasi);
+            log.info("Pengaduan dengan id register: " + id_registrasi + " berhasil dihapus");
+        } catch (Exception e) {
+            log.error("Error deleting pengaduan with id register: " + id_registrasi, e);
+        }
     }
+    
 
-    public Pengaduan getPengaduanById(Integer id) {
+    public Pengaduan getPengaduanById(@NonNull Integer id) {
         return pengaduanRepo.findById(id).orElse(null);
     }
 
-    public Pengaduan updatePengaduan(Integer id, Pengaduan pengaduan, User user) {
-
-        Pengaduan pengaduan2 = getPengaduanById(id);
-
-        if (pengaduan2 != null) {
-            pengaduan2.setAduan(pengaduan.getAduan());
-            pengaduan2.setAlamat(pengaduan.getAlamat());
-            pengaduan2.setHarapan(pengaduan.getHarapan());
-            pengaduan2.setId_registrasi(pengaduan.getId_registrasi());
-            pengaduan2.setNama(pengaduan.getNama());
-            pengaduan2.setPekerjaan(pengaduan.getPekerjaan());
-            pengaduan2.setTTL(pengaduan.getTTL());
-            pengaduan2.setPendidikan(pengaduan.getPendidikan());
-            pengaduan2.setCreated_at(pengaduan.getCreated_at());
-
-            Pengaduan newPengaduan = pengaduanRepo.save(pengaduan2);
-            return newPengaduan;
-        }
-
-        return null;
-    }
 
     public List<Pengaduan> getPengaduanByNik(String nik){
         if(nik != null){
@@ -80,12 +68,12 @@ public class PengaduanService {
         return null;
         
     }
-    public Status getStatusByIdRegister(Integer id_register){
-       Pengaduan pengaduan = getPengaduanById(id_register);
-       return pengaduan.getStatus();
+    // public Status getStatusByIdRegister(Integer id_register){
+    //    Pengaduan pengaduan = getPengaduanById(id_register);
+    //    return pengaduan.getStatus();
 
         
-    }
+    // }
 
     public long jumlahPengaduan(){
         return pengaduanRepo.count();

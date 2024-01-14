@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.finalproject.panda.Repository.UserRepo;
 import com.finalproject.panda.model.User;
 
+import lombok.NonNull;
+
 @Service
 public class UserService {
 
@@ -24,7 +26,7 @@ public class UserService {
         return userRepo.findAll();
     }
     
-    public User saveUser(User users) {
+    public User saveUser(@NonNull User users) {
         User saveUser = userRepo.save(users);
         return saveUser;
     }
