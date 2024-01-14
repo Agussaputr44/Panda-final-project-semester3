@@ -64,7 +64,7 @@
             <td><span class="status pending">Terikirm</span>
             </td>
             <td>
-              <a th:href="@{/panda/delete/{id_register}(id_register=${p.id_registrasi})}"
+              <a th:href="@{/panda/delete(id_register=${p.id_registrasi})}"
                 onclick="return confirm('Apakah anda yakin menghapus aduan ini?');">
                 <button class="btn btn-danger btn-sm">
                   <i class="fas fa-trash-alt mr-1"></i>Delete
