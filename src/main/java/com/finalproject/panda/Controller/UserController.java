@@ -33,7 +33,6 @@ public class UserController {
         return "User/LoginNew";
     }
 
-    
     @PostMapping("/login")
     public String loginSuccess(
             @RequestParam String nik,
@@ -83,7 +82,7 @@ public class UserController {
 
                 model.addAttribute("successMessage", "Profile updated successfully");
 
-                if(currentUser.getNik().equals("0000")){
+                if (currentUser.getNik().equals("0000")) {
                     return "redirect:/panda/admin/dashboard";
                 }
                 return "redirect:/panda/profile";

@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/panda")
-public class profilecontroller {
+public class ProfileController {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Autowired

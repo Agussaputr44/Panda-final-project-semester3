@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/panda")
-public class adminController {
+public class AdminController {
 
     @Autowired
     private PengaduanService pengaduanService;
