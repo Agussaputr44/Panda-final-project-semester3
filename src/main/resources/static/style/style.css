@@ -60,13 +60,14 @@ form.sign-in-form {
   z-index: 2;
 }
 
- form{
+ .pw{
   position: relative;
 }
- form .btnView{
+ .pw .btnView{
   position:absolute;
-  right: 210px;
-  transform: translatey(180%);
+  /* top: 1px; */
+  right: 1rem;
+  /* transform: translatey(180%); */
   background: none;
   border: none;
   font-size: 16px;
@@ -442,7 +443,7 @@ form.sign-in-form {
   }
 
   .container.sign-up-mode:before {
-    bottom: 28%;
+    bottom: 20%;
     left: 50%;
   }
   form .btnView{

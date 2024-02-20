@@ -13,30 +13,54 @@
     />
 
     <title>Pengaduan</title>
+
+    <style>
+      .form-control:not(select) {
+            padding: 1.5rem 0.5rem;
+        }
+
+
+
+        .form-control::placeholder {
+            color: #ccc;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px;
+            margin-left: 990px;
+        }
+
+        .border-md {
+            border-width: 2px;
+        }
+    </style>
   </head>
 
   <body class="bg-gray-100">
-    <!-- Form start -->
     <div id="content" class="container mt-8">
       <div class="flex flex-col md:flex-row items-center justify-center">
-        <div class="md:w-1/2 mb-4 md:mb-0">
-          <img
-            src="/img/Premium_Vector___Working_woman_presentation-removebg-preview.png"
-            alt="form"
-            class="mb-3 mx-auto md:mx-0 md:mr-8"
-          />
-          <h1
-            class="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-center md:text-left md:pl-2"
-          >
-            Isi form pengaduan
-          </h1>
-          <p
-            class="text-sm md:text-base font-italic text-muted text-center md:text-left md:pl-2"
-          >
-            Mohon isi data di samping dengan <em>lengkap dan valid</em> untuk
-            mempermudah tim kami dalam memproses pengaduan anda
-          </p>
-        </div>
+        <div class="row py-5  align-items-center">
+          <div class="col-md-4 pr-lg-5 mb-5">
+              <img src="/img/Premium_Vector___Working_woman_presentation-removebg-preview.png" alt="form"
+                  class="img-fluid mb-3 width-10 d-md-block">
+              <h1>Isi form pengaduan</h1>
+              <p class="font-italic text-muted mb-0">Mohon isi data di samping dengan <em>lengkap dan valid</em> untuk
+                  mempermudah tim kami dalam memproses pengaduan anda</p>
+
+                  <br>
+                            <div class="">
+                              <p>Untuk melakukan konsultasi silahkan Pencet tombol Chat di bawah</p>
+                            </div>
+          </div>
 
         <!-- Complaint Form -->
         <div class="md:w-1/2">
@@ -49,7 +73,7 @@
           >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <!-- nama-->
-              <div class="mb-4">
+              <div class="mb-4 col-span-2">
                 <label
                   for="nama_lengkap"
                   class="block text-sm font-medium text-gray-700"
@@ -67,7 +91,7 @@
               </div>
 
               <!-- alamat -->
-              <div class="mb-4">
+              <div class="mb-4 col-span-2">
                 <label
                   for="alamat"
                   class="block text-sm font-medium text-gray-700"
@@ -84,7 +108,7 @@
               </div>
 
               <!-- pekerjaan -->
-              <div class="mb-4">
+              <div class="mb-4 col-span-2">
                 <label
                   for="pekerjaan"
                   class="block text-sm font-medium text-gray-700"
@@ -101,7 +125,7 @@
               </div>
 
               <!-- Pendidikan -->
-              <div class="mb-4">
+              <div class="mb-4 col-span-2">
                 <label
                   for="Pendidikan"
                   class="block text-sm font-medium text-gray-700"
@@ -118,7 +142,7 @@
               </div>
 
               <!-- TTL -->
-              <div class="mb-4">
+              <div class="mb-4 col-span-2">
                 <label for="TTL" class="block text-sm font-medium text-gray-700"
                   >Tanggal Kejadian</label
                 >
@@ -132,20 +156,19 @@
               </div>
 
               <!-- aduan -->
-              <div class="mb-4">
+              <div class="mb-4 col-span-2">
                 <label
                   for="aduan"
                   class="block text-sm font-medium text-gray-700"
                   >Aduan</label
                 >
-                <input
-                  id="aduan"
-                  type="text"
+                <textarea
+                  id="harapan"
                   th:field="*{aduan}"
-                  class="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500"
-                  placeholder="Aduan"
+                  class="mt-1 p-2 border border-gray-300 rounded-md w-full h-24 focus:outline-none focus:ring focus:border-blue-500"
+                  placeholder="Hal yang anda harapkan"
                   required
-                />
+                ></textarea>
               </div>
 
               <!-- harapan -->
@@ -182,9 +205,20 @@
     </div>
     <!-- Form end -->
 
+  
     <script>
-      function submitForm() {
-        document.getElementById("pengaduanForm").submit();
+    function submitForm() {
+        const form = document.getElementById("pengaduanForm");
+        const isEmptyFields = form.querySelectorAll("input:required, textarea:required").some(
+          (field) => !field.value.trim()
+        );
+
+        if (isEmptyFields) {
+          alert("Mohon isi semua field yang diperlukan sebelum mengirim.");
+          return; // Prevent form submission
+        }
+
+        form.submit();
         alert("Form submitted successfully!");
       }
     </script>
