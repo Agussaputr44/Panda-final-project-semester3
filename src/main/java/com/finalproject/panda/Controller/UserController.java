@@ -33,7 +33,6 @@ public class UserController {
         return "User/LoginNew";
     }
 
-    
     @PostMapping("/login")
     public String loginSuccess(
             @RequestParam String nik,
@@ -82,6 +81,10 @@ public class UserController {
                 log.info(currentUser.getNama_lengkap() + " berhasil update profile");
 
                 model.addAttribute("successMessage", "Profile updated successfully");
+
+                if (currentUser.getNik().equals("0000")) {
+                    return "redirect:/panda/admin/dashboard";
+                }
                 return "redirect:/panda/profile";
             } else {
                 model.addAttribute("errorMessage", "User not found in the session");
